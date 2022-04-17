@@ -17,7 +17,7 @@ public class TestOrders {
         item3.price = 1.75;
 
         Item item4 = new Item();
-        item4.name = "capuccino";
+        item4.name = "cappuccino";
         item4.price = 2.75;
     
         // Order variables -- order1, order2 etc.
@@ -38,7 +38,7 @@ public class TestOrders {
         order2.items.add(item1);
         order2.total += item1.price;
 
-        // order3 ordered a cappucino. Add the cappuccino to their order list and to their tab.
+        // order3 ordered a cappuccino. Add the cappuccino to their order list and to their tab.
         order3.items.add(item4);
         order3.total += item4.price;
 
@@ -50,7 +50,8 @@ public class TestOrders {
         order1.ready = true;
 
         // Sam ordered more drinks - 2 lattes. Update their order as well.
-        order4.items.add(item2 + item2);
+        order4.items.add(item2);
+        order4.items.add(item2);
         order4.total += (item2.price + item2.price); 
 
         // Jimmy’s order is now ready. Update his status.
