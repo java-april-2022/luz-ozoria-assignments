@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+h1{
+	color: salmon;
+	margin: 50px;
+}
+
+table {
+	margin-left: 50px;
+}
+
+th {
+	color: salmon;
+}
