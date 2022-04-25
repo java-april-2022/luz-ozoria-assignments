@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+#time-display {
+	text-align: center;
+	color: green;
+	margin: 100px;
+}
+
+#date-display {
+	text-align: center;
+	color: blue;
+	margin: 100px;
+}
