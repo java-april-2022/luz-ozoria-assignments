@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+#index-header {
+	text-align: center;
+	border: 30px;
+}
+
+.index-body {
+	text-align: center;
+}
+
+#counter-header {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+#return-home {
+	margin-left: 20px;
+}
