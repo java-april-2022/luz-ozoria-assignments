@@ -1,14 +1,14 @@
 package com.diana.helloworld;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
 
-@RestController
+@Controller
 @RequestMapping("/hello")
 public class HomeController {
 	@RequestMapping("/")
 	public String hello() {
-		return "Hello World!";
+		return "index.jsp";
 		
 	}
 	

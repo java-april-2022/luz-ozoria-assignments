@@ -8,20 +8,41 @@
 		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.diana.daikichipathvariables</groupId>
-	<artifactId>daikichiPathVariables</artifactId>
+	<groupId>com.diana.ninjagoldgame</groupId>
+	<artifactId>ninjaGoldGame</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>daikichiPathVariables</name>
-	<description>Core Assignment: Daikichi Path Variables</description>
+	<name>ninjaGoldGame</name>
+	<description>Practice Module - Ninja Gold Game</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
-                <groupId>org.apache.tomcat.embed</groupId>
-                <artifactId>tomcat-embed-jasper</artifactId>
-        </dependency>
+		    <groupId>org.apache.tomcat.embed</groupId>
+		    <artifactId>tomcat-embed-jasper</artifactId>
+	    </dependency>
+		<dependency>
+		   <groupId>javax.servlet</groupId>
+		   <artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+	        <groupId>org.webjars</groupId>
+	        <artifactId>webjars-locator</artifactId>
+	        <version>0.30</version>
+    	</dependency>
+    	<!-- BOOTSTRAP DEPENDENCIES -->
+    	<dependency>
+	        <groupId>org.webjars</groupId>
+	        <artifactId>bootstrap</artifactId>
+	        <version>5.0.1</version>
+    	</dependency>
+    	<dependency>
+	        <groupId>org.webjars</groupId>
+	        <artifactId>jquery</artifactId>
+	        <version>3.6.0</version>
+    	</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
