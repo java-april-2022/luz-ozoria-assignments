@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+
+h1, h2 {
+	margin-top: 50px;
+	margin-bottom: 20px;
+	color: CadetBlue; 
+	font-size: 2.5rem;
+}
+
+form {
+	padding: 5px;
+	margin: 25px;
+	color: DarkSlateGrey;
+}
+
+#links {
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
+	
+}
