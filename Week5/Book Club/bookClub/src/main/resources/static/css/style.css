@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.page-container {
+	padding: 10px;
+	margin: 20px;
+}
+
+h1, h2 {
+	margin-top: 50px;
+	margin-bottom: 20px;
+	color: slategrey;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+	
+
+#links {
+	display: flex;
+	align-items: baseline;
+	justify-content: max-content;
+	
+}
+
+#show-page {
+	background: whiteSmoke;
+}
