@@ -72,7 +72,7 @@ public class User {
 		this.updatedAt = new Date();
 	}
 	
-	// GETTERS & SETTERS
+	// Getters & Setters
 		
 
 	public Long getId() {

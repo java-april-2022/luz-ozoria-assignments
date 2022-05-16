@@ -1,7 +1,6 @@
 package com.diana.bookclub.models;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -55,7 +53,7 @@ public class Book {
 		this.title= title;
 		this.authorName = authorName;
 		this.myThoughts = myThoughts;
-		this.user = (User) user;
+		this.user = user;
 	}
 	
 	@PrePersist
