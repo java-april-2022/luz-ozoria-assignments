@@ -26,16 +26,16 @@ public class Book {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message="Title required")
-	@Size(min=2, max=200)
+	@NotBlank(message="Title field required!")
+	@Size(min=2, max=200, message="Title must be between 2 and 200 characters")
 	private String title;
 	
-	@NotBlank(message="Author required")
-	@Size(min=2, max=200)
+	@NotBlank(message="Author field required!")
+	@Size(min=2, max=200, message="Author name must be between 2 and 200 characters")
 	private String authorName;
 	
-	@NotBlank(message="Thoughts required")
-	@Size(min=2, max=200)
+	@NotBlank(message="Thoughts field required!")
+	@Size(min=2, max=250, message="Thoughts must be between 2 and 250 characters")
 	private String myThoughts;
 	
 	@Column(updatable=false)
@@ -50,12 +50,11 @@ public class Book {
 		
 	}
 	
-	public Book(Date createdAt, Date updatedAt, List<User> user, @NotBlank @Size(min = 2, max = 200) String title, @NotBlank @Size(min = 2, max = 200) String authorName, @NotBlank(message = "Thoughts required") @Size(min = 2, max = 200) String myThoughts) {
+	public Book(String title, String authorName, String myThoughts, User user) {
+	
 		this.title= title;
 		this.authorName = authorName;
 		this.myThoughts = myThoughts;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
 		this.user = (User) user;
 	}
 	

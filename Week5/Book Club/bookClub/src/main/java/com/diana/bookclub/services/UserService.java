@@ -1,5 +1,6 @@
 package com.diana.bookclub.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -17,65 +18,53 @@ public class UserService {
 	@Autowired
 	private UserRepository repo;
 	
-    @Autowired
-    private UserRepository userRepo;
+	public List<User> getAllUsers(){
+		return repo.findAll();
+	}
     
-    // TO-DO: Write register and login methods!
     public User register(User newUser, BindingResult result) {
-        
-    	// TO-DO - Reject values or register if no errors:
-        
-        // Reject if email is taken (present in database)
-    	Optional<User> userLookUp = userRepo.findByEmail(newUser.getEmail());
-    	if (userLookUp.isPresent()) {
-    		result.rejectValue("email", "Unique", "Account with this email already exists.");
+
+    	Optional<User> regUser = repo.findByEmail(newUser.getEmail());
+    	if (regUser.isPresent()) {
+    		result.rejectValue("email", "Unique", "An account with this email already exists.");
     	}
     	
-        // Reject if password doesn't match confirmation
     	if(!newUser.getPassword().equals(newUser.getConfirm())) {
-    	    result.rejectValue("confirm", "Matches", "The Confirm Password must match Password!");
+    	    result.rejectValue("confirm", "Matches", "Passwords must match!");
     	}
-        
-        // Return null if result has errors
+
     	if(result.hasErrors()) {
+    		System.out.println("Please review input and try again!");
     		return null;
     	}
     
-        // Hash and set password, save user to database
     	String hashed = BCrypt.hashpw(newUser.getPassword(), BCrypt.gensalt());
     	newUser.setPassword(hashed);
     	
     	newUser = repo.save(newUser);
-    	System.out.println("New user created with ID: " + newUser.getId());
+    	System.out.println("Success! A new user has been created!");
     	
         return newUser;
     }
     
     public User login(LoginUser newLogin, BindingResult result) {
-        
-    	// TO-DO - Reject values:
-        
-    	// Find user in the DB by email
-        // Reject if NOT present
-    	Optional<User> userLookUp = userRepo.findByEmail(newLogin.getEmail());
-    	if (!userLookUp.isPresent()) {
-    		result.rejectValue("email", "MissingAccount", "No account found.");
+
+    	Optional<User> userFind = repo.findByEmail(newLogin.getEmail());
+    	if (!userFind.isPresent()) {
+    		result.rejectValue("email", "MissingAccount", "No account exists with this email.");
     		return null;
     	}
-    	// User exists, retrieve user from DB
-    	User user = userLookUp.get();
+    	
+    	User user = userFind.get();
         
-        // Reject if BCrypt password match fails
     	if(!BCrypt.checkpw(newLogin.getPassword(), user.getPassword())) {
     	    result.rejectValue("password", "Matches", "Invalid Password!");
     	}
     	
-        // Return null if result has errors
     	if(result.hasErrors()) {
     		return null;
     	}
     	
-        // Otherwise, return the user object
         return user;
     }
 
@@ -95,7 +84,7 @@ public class UserService {
 		if(result.isPresent()) {
 			return result.get();
 		}
-		
+		System.out.println("Sorry! User not found!");
 		return null;
 	}
 }
