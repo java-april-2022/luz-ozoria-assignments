@@ -42,7 +42,7 @@
 			<p style="color:slategrey; font-style: italic;"><c:out value="${book.myThoughts}"></c:out>
 		<hr>
 		<c:choose>
-			<c:when test="${userId==book.user.id}">
+			<c:when test="${user == book.user}">
 				<a href="/books/${book.id}/edit" class="btn border-secondary text-secondary p-2">Edit</a>
 			</c:when>
 		</c:choose>
