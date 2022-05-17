@@ -10,40 +10,34 @@ import com.diana.bookclub.models.Book;
 import com.diana.bookclub.models.User;
 import com.diana.bookclub.repositories.BookRepository;
 
-
 @Service
 public class BookService {
 
 	@Autowired
-	private BookRepository repo;
+	BookRepository bookRepo;
 	
-	public Book findById(Long id) {
-		
-		Optional<Book> result = repo.findById(id);
-		if(result.isPresent()) {
-			return result.get();
+	// Get all Books
+	public List<Book> getAllBooks(){
+		return bookRepo.findAll();
+	}
+	
+	// Get Books by user(postedBy)
+	public List<Book> getByUser(User user){
+		return bookRepo.findAllByUser(user);
+	}
+	
+	// Get one book by ID
+	public Book getById(Long id) {
+		Optional<Book> potentialBook = bookRepo.findById(id);
+		if (potentialBook.isPresent()) {
+			return potentialBook.get();
 		}
-		System.out.println("Book not found in directory!");
+		System.out.println("From BookService: book not found");
 		return null;
 	}
 	
-	public List<Book> all() {
-		return repo.findAll();
-	}
-	
-	public Book update(Book book) {
-		return repo.save(book);
-	}
-	
-	public Book create(Book book) {
-		return repo.save(book);
-	}
-	
-	public void delete(Book book) {
-		repo.delete(book);
-	}
-	
-	public List<Book> getByUser(User user){
-		return repo.findAllByUser(user);
+	// Save new book to database
+	public void saveBook(Book book) {
+		bookRepo.save(book);
 	}
 }

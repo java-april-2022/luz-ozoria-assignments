@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page isErrorPage="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -18,7 +16,7 @@
 <div class="page-container">
 	<nav class="d-flex justify-content-between align-items-center col-12">
 		<div>
-			<h1 style="color:purple">Welcome ${user.userName} </h1>
+			<h1 style="color:purple">Welcome ${user.name} </h1>
 			<h3 style="color:slategrey">Books from everyone's shelves:</h3>
 		</div>
 		<div class="d-flex col-2 row m-4">
@@ -39,12 +37,12 @@
 			</tr>
 		</thead>			
 		<tbody>
-		<c:forEach items="${books}" var="book">
+		<c:forEach items="${allBooks}" var="book">
 			<tr>
 				<td>${book.id}</td>
 				<td><a href="books/${book.id}"><c:out value="${book.title}"/></a></td>
-				<td>${book.authorName}</td>
-				<td>${book.user.userName}</td>
+				<td>${book.author}</td>
+				<td>${book.user.name}</td>
 			</tr>
 		</c:forEach>
 		</tbody>

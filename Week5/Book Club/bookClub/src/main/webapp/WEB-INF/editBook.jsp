@@ -17,14 +17,18 @@
 	</head>
 <body>
 	<div class="page-container">
-		<nav class="header">
-			<h1 style="color:purple">Change your Entry</h1>
-			<a href="/home" class="link">back to the shelves</a>
-			<hr>
+		<nav class="d-flex justify-content-between align-items-center col-12">
+		<div>
+			<h1 style="color:purple">Change your entry!</h1>
+		</div>
+		<div class="d-flex col-2 row m-4">
+				<a href="/home" class="link">back to the shelves</a>
+		</div>
 		</nav>
+		<hr>
 		
 		<div class="container">
-			<form:form action="/books/${book.id}" modelAttribute="book" class="form" method="post">
+			<form:form action="/books/update/${book.id}" modelAttribute="book" method="post">
 				<input type="hidden" name="_method" value="put"/>
 			
 				<div class="form-row">
@@ -34,23 +38,19 @@
 				</div>
 				
 				<div class="form-row">
-					<form:errors path="authorName" class="error"/>
-					<form:label for="authorName" path="authorName">Author:</form:label>
-					<form:input type="text" path="authorName" class="form-control"/>
+					<form:errors path="author" class="error"/>
+					<form:label for="author" path="author">Author:</form:label>
+					<form:input type="text" path="author" class="form-control"/>
 				</div>
 				
 				<div class="form-row">
-					<form:errors path="myThoughts" class="error"/>
-					<form:label for="myThoughts" path="myThoughts">Thoughts:</form:label>
-					<form:textarea path="myThoughts" class="form-control"/>
+					<form:errors path="comment" class="error"/>
+					<form:label for="comment" path="comment">Thoughts:</form:label>
+					<form:textarea path="comment" class="form-control"/>
 				</div>
 				
 				<div class="form-row">
-					<form:errors path="user" class="error"/>
-					<form:input type="hidden" path="user" value="${user.id}" class="form-control"/>
-				</div>
-				
-				<div class="form-row">
+					<form:hidden path="user" value="${ sessionId }"/>
 					<input type="submit" value="Submit" class="btn-primary"/>
 				</div>
 				

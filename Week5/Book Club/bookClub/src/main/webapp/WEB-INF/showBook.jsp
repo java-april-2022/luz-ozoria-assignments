@@ -28,21 +28,21 @@
 		<hr>
 		
 		<c:choose>
-			<c:when test="${userID==book.user.id}">
-				<h3 style="color:darkKhaki">You read ${book.title} by ${book.authorName}</h3>
+			<c:when test="${userId == book.user.id}">
+				<h3 style="color:darkKhaki">You read ${book.title} by ${book.author}</h3>
 				<hr>
 					<h4 style="color:slategrey">Here were your thoughts:</h4>
 			</c:when>
 			<c:otherwise>
-				<h3 style="color:darkKhaki"><c:out value="${book.user.userName} "></c:out>read <c:out value="${book.title}"></c:out> by <c:out value="${book.authorName}"></c:out></h3>
-				<h4 style="color:slategrey">Here are <c:out value="${book.user.userName}"></c:out>'s thoughts:</h4>
+				<h3 style="color:darkKhaki"><c:out value="${book.user.name} "></c:out>read <c:out value="${book.title}"></c:out> by <c:out value="${book.author}"></c:out></h3>
+				<h4 style="color:slategrey">Here are <c:out value="${book.user.name}"></c:out>'s thoughts:</h4>
 			</c:otherwise>			
 		</c:choose>
 		<hr>
-			<p style="color:slategrey; font-style: italic;"><c:out value="${book.myThoughts}"></c:out>
+			<p style="color:slategrey; font-style: italic;"><c:out value="${book.comment}"></c:out>
 		<hr>
 		<c:choose>
-			<c:when test="${user == book.user}">
+			<c:when test="${ userId == book.user.id}">
 				<a href="/books/${book.id}/edit" class="btn border-secondary text-secondary p-2">Edit</a>
 			</c:when>
 		</c:choose>

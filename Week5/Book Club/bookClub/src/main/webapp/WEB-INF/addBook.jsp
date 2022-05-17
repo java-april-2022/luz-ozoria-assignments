@@ -28,28 +28,27 @@
 	<hr>
 	
 	<div class="container">
-		<form:form action="/books/create" method="POST" modelAttribute="book">
+		<form:form action="/books/add" method="POST" modelAttribute="newBook">
 			<div class="form-group">
 				<form:label for="title" path="title">Title:</form:label>
 					<form:input type="text" path="title" class="form-control"/>
 					<form:errors path="title" style="color:red"/>
 			</div><br>
 			<div class="form-group">
-				<form:label for="authorName" path="authorName">Author:</form:label>
-					<form:input type="text" path="authorName" class="form-control"/>
-					<form:errors path="authorName" style="color:red"/>
+				<form:label for="author" path="author">Author:</form:label>
+					<form:input type="text" path="author" class="form-control"/>
+					<form:errors path="author" style="color:red"/>
 			</div><br>
 			<div class="form-group">
-				<form:label for="myThoughts" path="myThoughts">My Thoughts:</form:label>
-					<form:textarea type="text" path="myThoughts" class="form-control"/>
-					<form:errors path="myThoughts" style="color:red"/>
+				<form:label for="comment" path="comment">My Thoughts:</form:label>
+					<form:textarea type="text" path="comment" class="form-control"/>
+					<form:errors path="comment" style="color:red"/>
 			</div><br>
 			<div>
+				<form:hidden path="user" value="${ sessionId }"/>
 				<input type="submit" value="Submit" style="width:125px;" style="border:2px solid purple"/>
 			</div><br>
-	
-	</form:form>
-		
+		</form:form>
 	</div>
 </div>
 </body>

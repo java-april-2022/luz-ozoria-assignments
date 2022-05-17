@@ -27,9 +27,9 @@
 			<form:form action="/register" modelAttribute="newUser" class="form" method="POST">
 			
 				<div class="form-group">
-					<form:label for="userName" path="userName">User Name:</form:label>
-						<form:input type="text" path="userName" class="form-control"/>
-						<form:errors path="userName" style="color:red"/>
+					<form:label for="name" path="name">User Name:</form:label>
+						<form:input type="text" path="name" class="form-control"/>
+						<form:errors path="name" style="color:red"/>
 				</div><br>
 				
 				<div class="form-group">

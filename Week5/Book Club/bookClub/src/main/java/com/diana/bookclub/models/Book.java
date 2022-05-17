@@ -2,6 +2,7 @@ package com.diana.bookclub.models;
 
 import java.util.Date;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,11 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
+//import javax.persistence.PrePersist;
+//import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+//import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="books")
@@ -23,50 +24,26 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotBlank(message="Title field required!")
-	@Size(min=2, max=200, message="Title must be between 2 and 200 characters")
+	@NotEmpty(message="Every book need a title!")
 	private String title;
-	
-	@NotBlank(message="Author field required!")
-	@Size(min=2, max=200, message="Author name must be between 2 and 200 characters")
-	private String authorName;
-	
-	@NotBlank(message="Thoughts field required!")
-	@Size(min=2, max=250, message="Thoughts must be between 2 and 250 characters")
-	private String myThoughts;
-	
+	@NotEmpty(message="Don't forget the author!")
+	private String author;
+	private String comment;
 	@Column(updatable=false)
 	private Date createdAt;
 	private Date updatedAt;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="postedBy")
 	private User user;
 	
 	public Book() {
-		
 	}
 	
-	public Book(String title, String authorName, String myThoughts, User user) {
-	
-		this.title= title;
-		this.authorName = authorName;
-		this.myThoughts = myThoughts;
+	public Book(String title, String author, User user) {
+		this.title = title;
+		this.author = author;
 		this.user = user;
 	}
-	
-	@PrePersist
-	protected void onCreate() {
-		this.createdAt = new Date();
-	}
-	
-	@PreUpdate
-	protected void onUpdate() {
-		this.setUpdatedAt(new Date());
-	}
-	
-	// GETTERS & SETTERS
 
 	public Long getId() {
 		return id;
@@ -84,21 +61,28 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getAuthorName() {
-		return authorName;
+	public String getAuthor() {
+		return author;
 	}
 
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
-	}
-	
-
-	public String getMyThoughts() {
-		return myThoughts;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
-	public void setMyThoughts(String myThoughts) {
-		this.myThoughts = myThoughts;
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
 	}
 
 	public Date getUpdatedAt() {
@@ -117,7 +101,5 @@ public class Book {
 		this.user = user;
 	}
 	
-}
-
-
 	
+}
