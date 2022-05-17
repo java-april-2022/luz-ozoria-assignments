@@ -1,4 +1,5 @@
 package com.diana.bookclub.models;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -21,7 +22,7 @@ public class LoginUser {
 		this.password = password;
 	}
 
-	// GETTERS & SETTERS
+	// Getters & Setters
 	public String getEmail() {
 		return email;
 	}
