@@ -16,17 +16,14 @@ public class BookService {
 	@Autowired
 	BookRepository bookRepo;
 	
-	// Get all Books
 	public List<Book> getAllBooks(){
 		return bookRepo.findAll();
 	}
-	
-	// Get Books by user(postedBy)
+
 	public List<Book> getByUser(User user){
 		return bookRepo.findAllByUser(user);
 	}
 	
-	// Get one book by ID
 	public Book getById(Long id) {
 		Optional<Book> potentialBook = bookRepo.findById(id);
 		if (potentialBook.isPresent()) {
@@ -36,7 +33,6 @@ public class BookService {
 		return null;
 	}
 	
-	// Save new book to database
 	public void saveBook(Book book) {
 		bookRepo.save(book);
 	}
