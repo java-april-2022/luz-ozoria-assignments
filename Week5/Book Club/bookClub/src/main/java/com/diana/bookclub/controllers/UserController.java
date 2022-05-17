@@ -46,38 +46,27 @@ public class UserController {
     
     @PostMapping("/login")
 	public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, BindingResult results, Model model, HttpSession session) {
-		
 		User user = userService.login(newLogin, results);
-		// checking for errors in form
 		if(results.hasErrors()) {
-			// binding empty object to JSP
 			model.addAttribute("newUser", new User());
 			return "index.jsp";
 		}
 		
-		// continue, get ID from DB, store in session
 		session.setAttribute("userId", user.getId());
-		
 		return "redirect:/home";
 	}
     
     @GetMapping("/home")
 	public String home(Model model, HttpSession session) {
-		
-		// checking user is logged in(session)
 		if(session.getAttribute("userId") == null) {
 			return "redirect:/";
 		}
-			
-		// getting user info from session
-		// & saving in model
 		model.addAttribute("user", userService.findById((Long) session.getAttribute("userId")));
 		model.addAttribute("allBooks", bookService.getAllBooks());
 		return "dashboard.jsp";
 	}
 
-    
-    
+      
     @GetMapping("/logout")
     public String logout(HttpSession session) {
     	session.invalidate();
